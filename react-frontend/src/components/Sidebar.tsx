@@ -10,7 +10,7 @@ const Sidebar: React.FC = () => {
     const dispatch = useDispatch()
 
     const handleLogout = () => {
-        dispatch(logout({}))
+        dispatch(logout())
     }
 
     return (

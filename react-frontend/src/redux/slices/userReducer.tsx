@@ -1,4 +1,4 @@
-import { Slice, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../../types";
 
 const initialState: {
@@ -13,10 +13,10 @@ const initialState: {
         role: ""
     },
     token: "",
-    isLoggedIn: false
+    isLoggedIn: false,
 };
 
-const userSlice: Slice = createSlice({
+const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
@@ -26,13 +26,12 @@ const userSlice: Slice = createSlice({
             state.token = payload.token
         },
 
-        logout: (state,payload) => {
+        logout: (state) => {
             state.isLoggedIn = false;
             state.user = {
                 ...initialState.user
             }
             state.token = ""
-            state.users = []
             window.location.replace("/auth/login");
         }
     }

@@ -2,7 +2,7 @@ import { signIn } from '@/services/auth'
 import { yupResolver } from "@hookform/resolvers/yup"
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { SubmitHandler, useForm } from "react-hook-form"
+import { Resolver, SubmitHandler, useForm } from "react-hook-form"
 import { BiLoaderAlt } from 'react-icons/bi'
 import { useDispatch } from 'react-redux'
 import * as yup from "yup"
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<LoginInputs>({
-        resolver: yupResolver(LoginSchema),
+        resolver: yupResolver(LoginSchema) as Resolver<LoginInputs, any>,
         mode: "onTouched"
     })
 
